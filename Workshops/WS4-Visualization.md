@@ -1,4 +1,4 @@
-# 📉 คู่มือการสอน: สร้าง Line Chart, Card, แผนที่ และการจัดหน้า Report
+# 📉 สร้าง Line Chart, Card, แผนที่ และการจัดหน้า Report
 
 ## 🔹 Step 1: สร้าง Line Chart ดูแนวโน้ม (Trend Analysis)
 **ขั้นตอน:**
