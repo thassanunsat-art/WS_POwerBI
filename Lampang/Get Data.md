@@ -1,7 +1,7 @@
 # Get Data
 ## File 
 ## API - HDC
-### 📑 ดึงข้อมูลจาก HDC
+### 📑 ดึงข้อมูลจาก HDC 
 
 Home -> Tranform data -> Home -> New Source  -> Blank Qury
 ```powerquery
@@ -45,3 +45,9 @@ let
     FilteredRows = Table.SelectRows(InvokedFunction, each ([Data] <> null))
 in
     FilteredRows
+
+```
+### 📑 ดึงข้อมูลจาก HDC - มากกว่า 1 
+
+Home -> Tranform data -> Home -> New Source  -> Blank Qury
+
