@@ -5,10 +5,9 @@
 3. Fact_EPI
 4. B_YEAR
 
-### 1. DIM_HealthCode_lampang
-1. นำข้อมูล ชื่อวัคซีน เข้า โดยมีขั้นตอนดังนี้
-   Home --> Query -->Advanced Editor
+### 1. DIM_HealthCode_lampang : Home --> New Sources --> Excell --> เลือกไฟล์ที่ต้องนำเข้า --> OK
 
+### 2. DIM_EPI_Name : Home --> Query -->Advanced Editor --> วาง Code ที่แนบ
  ```
    let
     Source = Table.FromRows({
