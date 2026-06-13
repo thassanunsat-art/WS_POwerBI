@@ -66,8 +66,11 @@
 in
     #"Changed Type"
    ```
-3. API- HDC ความครอบคลุมของเด็กอายุครบ 1 ปีที่ได้รับวัคซีน BCG ,HBV1,DTP1,DTP3,HBV3,Hib3,โปลิโอ3, MMR1,IPV,Rota รายไตรมาส 
+
+### 3. Fact_EPIAPI- HDC ความครอบคลุมของเด็กอายุครบ 1 ปีที่ได้รับวัคซีน BCG ,HBV1,DTP1,DTP3,HBV3,Hib3,โปลิโอ3, MMR1,IPV,Rota รายไตรมาส 
     https://opendata.moph.go.th/
+    Home --> Query -->Advanced Editor --> วาง Code ที่แนบ
+    
    ```
    let
     // 1. สร้างรายการปีที่ต้องการดึงข้อมูล (สามารถเพิ่มปีได้)
