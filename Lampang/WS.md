@@ -69,7 +69,7 @@ in
    ```
 
 ### 3. Fact_EPIAPI- HDC ความครอบคลุมของเด็กอายุครบ 1 ปีที่ได้รับวัคซีน BCG ,HBV1,DTP1,DTP3,HBV3,Hib3,โปลิโอ3, MMR1,IPV,Rota รายไตรมาส https://opendata.moph.go.th/
-Home --> Query -->Advanced Editor --> วาง Code ที่แนบ
+Home --> Query -->Advanced Editor --> วาง Code ที่แนบ --> เปลี่ยนชื่อ Table : Fact_EPI
     
 ```
    let
@@ -162,17 +162,20 @@ in
     #"Added Custom"
 ```
 
-### การแก้ไขเดือน
-
-1. Add Column -> Custom Column 
-2. เติมข้อมูลดังนี้ 
-      New column name 
-3.    Custom column fomula
-<img width="341" height="215" alt="image" src="https://github.com/user-attachments/assets/0b9bc44b-ca40-4331-b1ac-713982c045db" />
-
+## Clensing Data
+### Fact_EPI
+1. เลือก target10 - pcv3_09 
+2. เลือก Transform --> Unpivot data
+   <img width="945" height="483" alt="image" src="https://github.com/user-attachments/assets/c1cc95a1-e7d3-41c8-83d1-50da8fb06931" />
+3. สร้าง Column เดือน
+   - เลือก  Add column name 
+   - เลือก  Custom column fomula
+   - New column name : Month
+   - นำ Code ไปวางที่ Custom column fomula --> OK
 ```
-{"มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
-"กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"}
-{Number.From(Text.Remove([Attribute], {"r", "t"})) - 1}
+{"มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"}{Number.From(Text.End([Attribute], 2)) - 1}
 ```
-4. OK
+
+4. ลบ  Rowe : target
+5. เปลี่ยนชื่อ Column : Vaccine
+
