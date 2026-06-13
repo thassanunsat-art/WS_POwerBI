@@ -4,6 +4,8 @@
 2. เติมข้อมูลดังนี้ 
       New column name 
 3.    Custom column fomula
+<img width="341" height="215" alt="image" src="https://github.com/user-attachments/assets/0b9bc44b-ca40-4331-b1ac-713982c045db" />
+
 ```
 {"มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
 "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"}
