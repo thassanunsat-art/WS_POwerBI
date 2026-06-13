@@ -5,7 +5,8 @@
 3. Fact_EPI
 4. B_YEAR
 
-### 1. DIM_HealthCode_lampang : Home --> New Sources --> Excell --> เลือกไฟล์ที่ต้องนำเข้า --> OK
+### 1. DIM_HealthCode_lampang 
+: Home --> New Sources --> Excell --> เลือกไฟล์ที่ต้องนำเข้า --> OK
 
 ### 2. DIM_EPI_Name : Home --> Query -->Advanced Editor --> วาง Code ที่แนบ
  ```
