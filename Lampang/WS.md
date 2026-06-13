@@ -113,8 +113,54 @@ Home --> Query -->Advanced Editor --> วาง Code ที่แนบ
     in
     FilteredRows
 ```
+### 4. สร้างตาราง B_YEAR : 
+Home --> Query -->Advanced Editor --> วาง Code ที่แนบ
 
+```
+let
+    // กำหนดช่วงปี
+    StartYear = 2550,
+    EndYear = 2570,
 
+    // สร้าง list ของปี
+    Years = {StartYear..EndYear},
+
+    // สร้าง list ของเดือน 1-12
+    Months = {1..12},
+
+    // สร้างทุก combination ของ ปี + เดือน
+    YearMonth = List.Combine(
+        List.Transform(Years, each 
+            List.Transform(Months, (m) => [B_YEAR = _, Month = m])
+        )
+    ),
+
+    // แปลงเป็น Table
+    tbl = Table.FromRecords(YearMonth),
+
+    // สร้างวันที่ (เอาวันที่ 1 ของเดือน)
+    AddDate = Table.AddColumn(tbl, "MM", each #date([B_YEAR], [Month], 1), type date),
+
+    // สร้าง Year (ปีปฏิทิน)
+    AddYear = Table.AddColumn(AddDate, "Year", each Date.Year([MM]), Int64.Type),
+
+    // สร้าง B_YEAR (ปีงบประมาณ: ถ้าเดือน >= 10 ให้ +1)
+    AddFiscalYear = Table.AddColumn(AddYear, "B_YEAR_NEW", each 
+        if Date.Month([MM]) >= 10 then [Year] + 1 else [Year], Int64.Type),
+
+    // เลือกคอลัมน์ตามต้องการ
+    Result = Table.SelectColumns(AddFiscalYear, {"MM", "B_YEAR_NEW", "Year"}),
+
+    // เปลี่ยนชื่อให้ตรง format ที่คุณใช้
+    RenameColumn = Table.RenameColumns(Result, {{"B_YEAR_NEW", "B_YEAR"}}),
+    #"Inserted Month" = Table.AddColumn(RenameColumn, "Month", each Date.Month([MM]), Int64.Type),
+    #"Inserted Month Name" = Table.AddColumn(#"Inserted Month", "Month Name", each Date.MonthName([MM]), type text),
+    #"Removed Columns" = Table.RemoveColumns(#"Inserted Month Name",{"Month"}),
+    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Month Name", "Month_E"}}),
+    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Month_TH", each Date.MonthName([MM], "th-TH"))
+in
+    #"Added Custom"
+```
 
 ### การแก้ไขเดือน
 
